@@ -26,6 +26,6 @@ Worker 仅接受带有 `Authorization: Bearer <TOKEN>` 的 `POST` 请求，并�
 curl -X POST 'https://<worker>.workers.dev' \
   -H 'Authorization: Bearer <TOKEN>' \
   -H 'Content-Type: application/json' \
-  -d '{"to":"xxxx@qq.com","from":"alert@12345.xyz","subject":"Topic","html":"Hello World","text":"Text"}'
+  -d '{"to":"xxxx@qq.com","from":"alert@12345.xyz","subject":"服务异常通知","html":"<h2>SaaS服务异常, 请检查: Sentry</h2>","text":"SaaS服务异常, 请检查: Sentry"}'
 ```
 
