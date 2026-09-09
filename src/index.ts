@@ -51,9 +51,6 @@ export default {
 
   // Handle incoming emails (Email Routing)
   async email(message, env: Env, ctx): Promise<void> {
-    if (!hasRequiredConfiguration(env)) {
-      return new Response("Server configuration is incomplete", { status: 500 });
-    }
     // Forward to a single address
     await message.forward(env.EMAIL_TO);
   },
