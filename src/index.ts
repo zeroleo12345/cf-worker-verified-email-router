@@ -4,7 +4,6 @@
  */
 interface Env {
   EMAIL: SendEmail;
-  EMAIL_FROM: string;
   EMAIL_TO: string;
   TOKEN: string;
 }
@@ -37,8 +36,6 @@ export default {
   // Handle incoming emails (Email Routing)
   async email(message, env: Env, ctx): Promise<void> {
     // Forward to a single address
-    if (message.to.includes("@yourdomain.com")) {
-      await message.forward(env.EMAIL_TO);
-    }
+    await message.forward(env.EMAIL_TO);
   },
 } satisfies ExportedHandler<Env>;

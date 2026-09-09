@@ -12,7 +12,6 @@ npm run dev
 
 在 Cloudflare Worker 的 **Settings > Variables and Secrets** 中配置：
 
-- `EMAIL_FROM`：已接入 Cloudflare Email Service 的发件地址，例如 `alert@example.com`。
 - `EMAIL_TO`：Cloudflare Email Routing 中已验证的 Destination Address。
 - `TOKEN`：用于调用此 Worker 的随机密钥；将其设为 **Secret**。
 
