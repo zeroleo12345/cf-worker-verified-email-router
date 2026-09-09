@@ -12,7 +12,6 @@ npm run dev
 
 在 Cloudflare Worker 的 **Settings > Variables and Secrets** 中配置：
 
-- `EMAIL_TO`：Cloudflare Email Routing 中已验证的 Destination Address。
 - `TOKEN`：用于调用此 Worker 的随机密钥；将其设为 **Secret**。
 
 Worker 仅接受带有 `Authorization: Bearer <TOKEN>` 的 `POST` 请求，并通过 `EMAIL` 发送绑定发信。
@@ -26,6 +25,6 @@ Worker 仅接受带有 `Authorization: Bearer <TOKEN>` 的 `POST` 请求，并�
 curl -X POST 'https://<worker>.workers.dev' \
   -H 'Authorization: Bearer <TOKEN>' \
   -H 'Content-Type: application/json' \
-  -d '{"to":"xxxx@qq.com","from":"alert@12345.xyz","subject":"服务异常通知","html":"<h2>SaaS服务异常, 请检查: Sentry</h2>","text":"SaaS服务异常, 请检查: Sentry"}'
+  -d '{"to":"xxxx@qq.com","from":"alert@12345.xyz","subject":"服务异常警通知","html":"<h2>SaaS服务异常, 请检查: Sentry</h2>","text":"SaaS服务异常, 请检查: Sentry"}'
 ```
 
