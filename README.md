@@ -28,3 +28,4 @@ curl -X POST 'https://<worker>.workers.dev' \
   -H 'Content-Type: application/json' \
   -d '{"to":"xxxx@qq.com","from":"alert@12345.xyz","subject":"Topic","html":"Hello World","text":"Text"}'
 ```
+
