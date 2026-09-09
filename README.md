@@ -18,6 +18,8 @@ npm run dev
 
 Worker 仅接受带有 `Authorization: Bearer <SEND_TOKEN>` 的 `POST` 请求，并通过 `EMAIL` 发送绑定发信。
 
+同时，Worker 实现了 `email()` 处理器并声明 `EMAIL_HANDLER` 路由绑定。部署后可在 **Compute > Email Service > Email Routing > Routing Rules** 创建规则，选择 **Send to a Worker**，然后在 Worker 下拉框中选择此 Worker；收到的邮件会转发至 `EMAIL_TO`。
+
 
 ## 调用示例
 

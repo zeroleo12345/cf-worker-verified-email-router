@@ -31,4 +31,8 @@ export default {
 
     return Response.json({ ok: true });
   },
+
+  async email(message, env): Promise<void> {
+    await message.forward(env.EMAIL_TO);
+  },
 } satisfies ExportedHandler<Env>;
