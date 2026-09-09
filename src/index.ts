@@ -18,20 +18,17 @@ export default {
         headers: { Allow: "POST" },
       });
     }
-
     if (request.headers.get("Authorization") !== `Bearer ${env.SEND_TOKEN}`) {
       return new Response("Unauthorized", { status: 401 });
     }
 
+    const data = await request.json();
     await env.EMAIL.send({
-      to: env.EMAIL_TO,
-      from: env.EMAIL_FROM,
-      subject: "Cloudflare Worker Email Router",
-      html: `
-        <h1>Hello</h1>
-        <p>This email was sent by Cloudflare Worker.</p>
-      `,
-      text: "Hello from Cloudflare Worker!",
+      to: data.to,
+      from: data.from,
+      subject: data.subject,
+      html: data.html,
+      text: data.text,
     });
 
     return new Response("Email sent successfully");
