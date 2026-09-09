@@ -6,7 +6,7 @@ interface Env {
   EMAIL: SendEmail;
   EMAIL_FROM: string;
   EMAIL_TO: string;
-  SEND_TOKEN: string;
+  TOKEN: string;
 }
 
 export default {
@@ -18,7 +18,7 @@ export default {
         headers: { Allow: "POST" },
       });
     }
-    if (request.headers.get("Authorization") !== `Bearer ${env.SEND_TOKEN}`) {
+    if (request.headers.get("Authorization") !== `Bearer ${env.TOKEN}`) {
       return new Response("Unauthorized", { status: 401 });
     }
 

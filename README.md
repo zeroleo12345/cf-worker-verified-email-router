@@ -14,9 +14,9 @@ npm run dev
 
 - `EMAIL_FROM`：已接入 Cloudflare Email Service 的发件地址，例如 `alert@example.com`。
 - `EMAIL_TO`：Cloudflare Email Routing 中已验证的 Destination Address。
-- `SEND_TOKEN`：用于调用此 Worker 的随机密钥；将其设为 **Secret**。
+- `TOKEN`：用于调用此 Worker 的随机密钥；将其设为 **Secret**。
 
-Worker 仅接受带有 `Authorization: Bearer <SEND_TOKEN>` 的 `POST` 请求，并通过 `EMAIL` 发送绑定发信。
+Worker 仅接受带有 `Authorization: Bearer <TOKEN>` 的 `POST` 请求，并通过 `EMAIL` 发送绑定发信。
 
 同时，Worker 实现了 `email()` 处理器并声明 `EMAIL_HANDLER` 路由绑定。部署后可在 **Compute > Email Service > Email Routing > Routing Rules** 创建规则，选择 **Send to a Worker**，然后在 Worker 下拉框中选择此 Worker；收到的邮件会转发至 `EMAIL_TO`。
 
@@ -25,5 +25,5 @@ Worker 仅接受带有 `Authorization: Bearer <SEND_TOKEN>` 的 `POST` 请求，
 
 ```bash
 curl -X POST 'https://<worker>.workers.dev' \
-  -H 'Authorization: Bearer <SEND_TOKEN>'
+  -H 'Authorization: Bearer <TOKEN>'
 ```
