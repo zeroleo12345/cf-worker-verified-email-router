@@ -1,3 +1,7 @@
+/**
+ * 参考:
+ *    https://developers.cloudflare.com/email-service/
+ */
 interface Env {
   EMAIL: SendEmail;
   EMAIL_FROM: string;
@@ -6,7 +10,8 @@ interface Env {
 }
 
 export default {
-  async fetch(request, env): Promise<Response> {
+  // Handle HTTP requests (Email Sending)
+  async fetch(request, env: Env, ctx): Promise<Response> {
     if (request.method !== "POST") {
       return new Response("Method Not Allowed", {
         status: 405,
@@ -19,20 +24,24 @@ export default {
     }
 
     await env.EMAIL.send({
-      from: env.EMAIL_FROM,
       to: env.EMAIL_TO,
-      subject: "Cloudflare Worker Test",
-      text: "Hello from Cloudflare Worker!",
+      from: env.EMAIL_FROM,
+      subject: "Cloudflare Worker Email Router",
       html: `
         <h1>Hello</h1>
         <p>This email was sent by Cloudflare Worker.</p>
       `,
+      text: "Hello from Cloudflare Worker!",
     });
 
-    return Response.json({ ok: true });
+    return new Response("Email sent successfully");
   },
 
-  async email(message, env): Promise<void> {
-    await message.forward(env.EMAIL_TO);
+  // Handle incoming emails (Email Routing)
+  async email(message, env: Env, ctx): Promise<void> {
+    // Forward to a single address
+    if (message.to.includes("@yourdomain.com")) {
+      await message.forward(env.EMAIL_TO);
+    }
   },
 } satisfies ExportedHandler<Env>;
