@@ -1,8 +1,8 @@
 export default {
   async fetch(request, env) {
     const result = await env.EMAIL.send({
-      from: "alert@example.com",
-      to: "your-email@gmail.com",
+      from: env.EMAIL_FROM,
+      to: env.EMAIL_TO,
       subject: "Cloudflare Worker Test",
       text: "Hello from Cloudflare Worker!",
       html: `
