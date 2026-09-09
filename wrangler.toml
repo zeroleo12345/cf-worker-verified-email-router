@@ -3,6 +3,9 @@ main = "src/index.ts"
 compatibility_date = "2026-09-09"
 keep_vars = true
 
+[[send_email]]
+name = "EMAIL"
+
 [observability.logs]
 enabled = true
 head_sampling_rate = 1
@@ -13,4 +16,3 @@ persist = true
 enabled = false
 head_sampling_rate = 1
 persist = true
-
