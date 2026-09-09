@@ -4,7 +4,6 @@
  */
 interface Env {
   EMAIL: SendEmail;
-  EMAIL_TO: string;
   TOKEN: string;
 }
 
