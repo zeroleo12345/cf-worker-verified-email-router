@@ -24,5 +24,7 @@ Worker 仅接受带有 `Authorization: Bearer <TOKEN>` 的 `POST` 请求，并�
 
 ```bash
 curl -X POST 'https://<worker>.workers.dev' \
-  -H 'Authorization: Bearer <TOKEN>'
+  -H 'Authorization: Bearer <TOKEN>' \
+  -H 'Content-Type: application/json' \
+  -d '{"to":"xxxx@qq.com","from":"alert@12345.xyz","subject":"Topic","html":"Hello World","text":"Text"}'
 ```
